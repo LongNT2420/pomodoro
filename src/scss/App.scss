@@ -1,0 +1,270 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,300&family=Poppins:ital,wght@0,200;0,400;1,200&family=Roboto:wght@300&display=swap");
+
+@import "_mixins";
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: rgb(217 85 80);
+  --primary-color: rgb(76, 145, 149);
+  --third-color: rgb(69, 124, 163);
+  --text-color: white;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--main-color);
+  color: var(--text-color);
+  transition: background-color 0.25s linear;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#root {
+  width: 640px;
+  margin: 0 auto;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.2);
+  .app-nav {
+    .nav-btn {
+      @include btnCss;
+      padding: 6px 16px;
+      margin-right: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+      font-size: 15px;
+      color: var(--text-color);
+      cursor: pointer;
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  }
+}
+.timer-box-wapper {
+  width: 500px;
+  margin: 26px auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.timer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 26px;
+  &-header {
+    .timer-box-btn {
+      padding: 6px 16px;
+      margin: 0 12px;
+      @include btnCss;
+      background-color: transparent;
+      color: var(--text-color);
+      font-size: 16px;
+      cursor: pointer;
+      // font-weight: 600;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+    .btn-active {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+  }
+  &-body {
+    font-size: 60px;
+    margin: 20px 0;
+  }
+  &-footer {
+    margin-bottom: 24px;
+    button {
+      @include btnCss;
+      @include size(200px, 60px);
+      background-color: var(--text-color);
+      color: var(--main-color);
+      font-size: 26px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-active {
+      box-shadow: 0px 8px #ccc;
+    }
+  }
+}
+
+.layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  .timer-setting-wrapper {
+      width: 420px;
+      height: 68%;
+      background-color: white;
+      margin-top: 65px ;
+      border-radius: 8px;
+      color: rgb(85, 85, 85);
+      font-weight: 600;
+      font-size: 18px;
+      .timer-setting {
+          padding: 20px;
+          &-header {
+              display: flex;
+              justify-content: space-between;
+              padding-bottom: 20px;
+              border-bottom: solid 1px #ccc;
+              font-size: 26px;
+          }
+          .timer {
+              padding: 20px 0;
+              border-bottom: solid 1px #ccc;
+              .timer-input-box{
+                margin-top: 16px;
+                font-size: 15px;
+                  display: flex;
+                  justify-content: space-between;
+                  .timer-input {
+                      display: flex;
+                      flex-direction: column;
+                      input {
+                          margin-top: 12px;
+                          @include size(60xp,35px);
+                          border: none;
+                          border-radius: 4px;
+                          background-color: #ddd;
+                          padding: 6px;
+                          outline: none;
+                          font-size: 16px;
+                      }
+                  }
+              }
+          }
+          .auto-setting-box {
+                display: flex;
+                justify-content: space-between;
+                padding:20px 0;
+                border-bottom: solid 1px #ccc;
+              .setting-button {
+                @include size(80px, 36px);
+                background-color: #ccc;
+                border-radius: 20px;
+                position: relative;
+                transition: all 0.25s linear;
+                .setting-button-circle{
+                  @include  size(32px);
+                  @include centerAbsolout("left");
+                  background-color: #fff;
+                  border-radius: 50%;
+                  left: 3px;
+                }
+              }
+              .active-btn {
+                background-color: greenyellow;
+                .setting-button-circle {
+                  @include centerAbsolout("right");
+                  left: unset;
+                  right: 3px;
+                }
+              }
+          }
+          &-footer {
+            padding: 20px 0;
+            text-align: right;
+            button {
+              color: var(--text-color);
+              @include size(60px,40px);
+              font-size: 18px;
+              outline: none;
+              border: none;
+              border-radius: 10px;
+              background-color: var(--primary-color);
+              cursor: pointer;
+            }
+          }
+      }
+  }
+}
+
+.Todo-wrapper {
+  padding: 70px;
+  .Todo-header {
+    display: flex;
+    justify-content: space-between;
+    .Todo-input {
+      @include size(400px,40px);
+      border: none;
+      outline: none;
+      border-radius: 6px;
+      font-size: 18px;
+      padding: 12px;
+    }
+    .add-btn {
+      @include size(90px,40px);
+      border: none;
+      outline: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-color);
+      background-color: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+      transition: all 0.15s linear;
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.4);
+      }
+    }
+  }
+  .Todo-body {
+    .Task-list {
+      list-style-type: none;
+      font-size: 16px;
+      color: rgb(40, 44, 52);
+      font-weight: 600;
+      .Task-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 6px;
+        margin:12px 0;
+        border-left: 3px solid orange;
+        border-radius: 3px;
+        .Delete-btn,.Change-btn {
+          @include size(35px,35px);
+          margin-right: 6px;
+          border: none;
+          outline: none;
+          border-radius: 3px;
+          font-size: 14px;
+          font-weight: 600;
+          color: var(--text-color);
+          cursor: pointer;
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+        .Delete-btn {
+          background-color: var(--main-color);
+        }
+        .Change-btn {
+          background-color: var(--primary-color);
+        }
+      }
+      }
+  }
+}

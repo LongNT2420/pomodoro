@@ -1,0 +1,29 @@
+@mixin size($width,$height:$width) {
+    width: $width;
+    height: $height;
+}
+
+@mixin centerAbsolout($Type) {
+    position: absolute;
+    @if $Type == 'both'{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    @if $Type == 'left' {
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+    @if $Type == 'right' {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}
+
+@mixin btnCss {
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
